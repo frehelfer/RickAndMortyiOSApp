@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Chacaters
 final class RMCharecterViewController: UIViewController {
 
     override func viewDidLoad() {
