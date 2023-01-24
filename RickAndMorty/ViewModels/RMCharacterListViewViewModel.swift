@@ -7,13 +7,38 @@
 
 import UIKit
 
+protocol RMCharacterListViewViewModelDelegate: AnyObject {
+    func didLoadInitialCharacters()
+}
+
 final class RMCharacterListViewViewModel: NSObject {
     
-    func fetchCharacters() {
-        RMService.shared.execute(.listCharactersRequests, expecting: RMGetAllCharactersReponse.self) { result in
+    public weak var delegate: RMCharacterListViewViewModelDelegate?
+    
+    private var characters: [RMCharacter] = [] {
+        didSet {
+            for character in characters {
+                
+                let viewModel = RMCharacterCollectionViewCellViewModel(characterName: character.name, characterStatus: character.status, characterImageUrl: URL(string: character.image))
+                
+                cellViewModels.append(viewModel)
+            }
+        }
+    }
+    
+    private var cellViewModels: [RMCharacterCollectionViewCellViewModel] = []
+    
+    public func fetchCharacters() {
+        RMService.shared.execute(.listCharactersRequests, expecting: RMGetAllCharactersReponse.self) { [weak self] result in
             switch result {
-            case .success(let model):
-                print(String(describing: model))
+            case .success(let responseModel):
+                let results = responseModel.results
+                self?.characters = results
+                
+                DispatchQueue.main.async {
+                    self?.delegate?.didLoadInitialCharacters()
+                }
+                
             case .failure(let error):
                 print(String(describing: error))
             }
@@ -23,7 +48,7 @@ final class RMCharacterListViewViewModel: NSObject {
 
 extension RMCharacterListViewViewModel: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return cellViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -31,7 +56,7 @@ extension RMCharacterListViewViewModel: UICollectionViewDataSource, UICollection
         ) as? RMCharacterCollectionViewCell else {
             fatalError("Unsupported Cell")
         }
-        
+        cell.configure(with: cellViewModels[indexPath.row])
         return cell
     }
     
