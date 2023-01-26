@@ -32,6 +32,7 @@
 		8D4C72E52980286500610DE4 /* RMCharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4C72E42980286500610DE4 /* RMCharacterDetailView.swift */; };
 		8D4C72E72980287900610DE4 /* RMCharacterDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4C72E62980287900610DE4 /* RMCharacterDetailViewViewModel.swift */; };
 		8D4C72E929805CD200610DE4 /* RMFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4C72E829805CD200610DE4 /* RMFooterLoadingCollectionReusableView.swift */; };
+		8DA5EB082983026900172450 /* RMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5EB072983026900172450 /* RMImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		8D4C72E42980286500610DE4 /* RMCharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailView.swift; sourceTree = "<group>"; };
 		8D4C72E62980287900610DE4 /* RMCharacterDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailViewViewModel.swift; sourceTree = "<group>"; };
 		8D4C72E829805CD200610DE4 /* RMFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
+		8DA5EB072983026900172450 /* RMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		8D4C72B929646F8300610DE4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				8DA5EB072983026900172450 /* RMImageLoader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				8D4C72A129646DEA00610DE4 /* AppDelegate.swift in Sources */,
 				8D4C72CB2964711700610DE4 /* RMSettingsViewController.swift in Sources */,
 				8D4C72D7297F612200610DE4 /* RMCharacterListViewViewModel.swift in Sources */,
+				8DA5EB082983026900172450 /* RMImageLoader.swift in Sources */,
 				8D4C72E72980287900610DE4 /* RMCharacterDetailViewViewModel.swift in Sources */,
 				8D4C72CD29647C6100610DE4 /* RMService.swift in Sources */,
 				8D4C72A329646DEA00610DE4 /* SceneDelegate.swift in Sources */,
